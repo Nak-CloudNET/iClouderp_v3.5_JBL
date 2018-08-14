@@ -1745,20 +1745,21 @@ class Site extends CI_Model
                 $ref_no .= sprintf("%05s", $ref->{$field});
 			} else {
 				if ($this->Settings->reference_format == 1) {
-	                $ref_no .= date('ym') . "/" . sprintf("%05s", $ref->{$field});
+	                $ref_no .= date('ym') . "/" . sprintf("%08s", $ref->{$field});
 	            }elseif ($this->Settings->reference_format == 2) {
-	                $ref_no .= date('Y') . "/" . sprintf("%05s", $ref->{$field});
+	                $ref_no .= date('Y') . "/" . sprintf("%08s", $ref->{$field});
 	            } elseif ($this->Settings->reference_format == 3) {
-	                $ref_no .= date('Y/m') . "/" . sprintf("%05s", $ref->{$field});
+	                $ref_no .= date('Y/m') . "/" . sprintf("%08s", $ref->{$field});
 	            } elseif ($this->Settings->reference_format == 4) {
-	                $ref_no .= sprintf("%05s", $ref->{$field});
+	                $ref_no .= sprintf("%08s", $ref->{$field});
 				} elseif ($this->Settings->reference_format == 5) {
-					$ref_no = sprintf("%05s", $ref->{$field});
+					$ref_no = sprintf("%08s", $ref->{$field});
+
 	            } else {
 	                $ref_no .= $this->getRandomReference();
 	            }
 	        }
-
+            //echo sprintf("%08s", $ref->{$field});exit;
             return $ref_no;
         }
         return FALSE;
